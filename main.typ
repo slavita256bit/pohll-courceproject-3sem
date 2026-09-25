@@ -5,12 +5,8 @@
 #set text(font: "Times New Roman", size: 14pt, lang: "ru")
 #show math.equation: set text(font: "STIX Two Math", size: 14pt)
 
-// Инициализация ГОСТ-шаблона с новым титульным листом
 #show: gost.with(
   title-template: custom-title-template.from-module(pnayavu-course-project),
-  // Поля student, manager и work можно не передавать,
-  // если они уже правильно заданы в title.typ,
-  // но оставим для возможности быстрого переопределения
   student: (
     name: "Ермаков В.С",
     group: "550503"
@@ -27,7 +23,6 @@
 //   footer: (city: "МИНСК", year: "2026")
 )
 
-// Типографика
 #show "<<": "«"
 #show ">>": "»"
 
