@@ -20,6 +20,8 @@
   ),
   year: none,
   pagination-align: right,
+  // Поля по СТП 01-2024, п. 2.1.1: слева 30, справа 15, сверху и снизу 20 мм
+  margin: (left: 30mm, right: 15mm, top: 20mm, bottom: 20mm),
 //   footer: (city: "МИНСК", year: "2026")
 )
 
@@ -86,7 +88,11 @@
 }
 
 #set math.equation(numbering: none)
-#set par(spacing: 0.8em, first-line-indent: 1.25cm, justify: true)
+// Межстрочный интервал 1,0 (шаг строк 18 пт) по СТП 01-2024, п. 2.1.1:
+// шаг = высота прописной буквы (~9,7 пт) + leading; между абзацами — тот же шаг
+#set par(leading: 8.3pt, spacing: 8.3pt, first-line-indent: 1.25cm, justify: true)
+// Тире в подписях рисунков и таблиц — «–», как в СТП («Рисунок 2.1 – Название»)
+#set figure.caption(separator: [ -- ])
 
 #show heading: it => {
   if it.numbering == none {
@@ -100,14 +106,7 @@
 #show figure.where(kind: table): set align(left)
 #show figure.caption.where(kind: table): set align(left)
 #set table(align: left + horizon)
-
-// Списки по ГОСТ (скобка в нумерации)
-#set enum(
-  indent: 1.25cm,
-  body-indent: 0.5em,
-  spacing: 0.65em,
-  numbering: "1)"
-)
+#show table: set par(justify: false)
 
 #set list(
   indent: 1.25cm,
@@ -117,7 +116,25 @@
 )
 
 #show figure: fig => {
-  if fig.kind == table { fig } else { move(dx: -7.5mm, fig) }
+  if fig.kind == image { move(dx: -7.5mm, fig) } else { fig }
+}
+
+// ====================================================
+// ИСТОЧНИКИ: запись списка — #source[текст] <key>, ссылка в тексте — @key -> [n]
+// ====================================================
+
+#show figure.where(kind: "source"): it => block(width: 100%, spacing: 8.3pt, align(left, par(
+  first-line-indent: (amount: 1.25cm, all: true),
+  justify: true,
+)[[#it.counter.display()] #it.body]))
+
+#show ref: it => {
+  let el = it.element
+  if el != none and el.func() == figure and el.kind == "source" {
+    link(el.location(), [[#numbering("1", ..el.counter.at(el.location()))]])
+  } else {
+    it
+  }
 }
 
 #show figure.where(kind: image): set figure(gap: 1.5em)
@@ -141,23 +158,22 @@
   }
 }
 
-// 2. Для нумерованных списков (+ ...)
+// 2. Сложное перечисление (+ ...) по СТП 01-2024, п. 2.3.7:
+// каждый элемент — абзац «1 Текст.» с абзацного отступа, продолжение строк от левого поля.
+// Элементы пишутся полными предложениями с прописной буквы и точкой в конце (ставится автором).
 #show enum: it => {
-  if it.has("label") and it.label == <auto-punct> {
-    it
-  } else {
-    let total = it.children.len()
-    let new-items = it.children.enumerate().map(((i, item)) => {
-      let delim = if i == total - 1 [.] else [;]
-      enum.item(item.body + delim)
-    })
-    [#enum(..new-items) <auto-punct>]
+  let start = if it.start == auto { 1 } else { it.start }
+  for (i, item) in it.children.enumerate() {
+    let n = if item.number in (auto, none) { start + i } else { item.number }
+    par(first-line-indent: (amount: 1.25cm, all: true))[#n #item.body]
   }
 }
 
 // ==========================================
 // ТЕКСТ КУРСОВОЙ РАБОТЫ
 // ==========================================
+
+#include "task-sheet.typ"
 
 #heading(numbering: none, outlined: false)[СОДЕРЖАНИЕ]
 #outline(title: none, depth: 2, indent: auto)
@@ -181,3 +197,7 @@
 - провести тестирование работоспособности разработанного приложения на операционных системах семейств "Windows" и "Linux"
 
 В основу разработки должны быть заложены принципы объектно-ориентированного проектирования и независимости алгоритмов обработки и хранения данных от графического интерфейса, чтобы упростить дальнейшее масштабирование функционала системы.
+
+#include "01-literature-review.typ"
+
+#include "references.typ"
