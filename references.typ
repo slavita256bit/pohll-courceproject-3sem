@@ -14,6 +14,10 @@
 
 #source[Справочник по языку C++ [Электронный ресурс]. -- Режим доступа: https://en.cppreference.com/w/cpp. -- Дата доступа: 27.09.2026.] <cppreference>
 
+#source[The Java Tutorials [Электронный ресурс] / Oracle. -- Режим доступа: https://docs.oracle.com/javase/tutorial. -- Дата доступа: 28.09.2026.] <java>
+
+#source[The Python Tutorial [Электронный ресурс] / Python Software Foundation. -- Режим доступа: https://docs.python.org/3/tutorial. -- Дата доступа: 28.09.2026.] <python>
+
 #source[Qt 6 Documentation [Электронный ресурс]. -- Режим доступа: https://doc.qt.io/qt-6. -- Дата доступа: 27.09.2026.] <qt-docs>
 
 #source[CMake Documentation [Электронный ресурс]. -- Режим доступа: https://cmake.org/cmake/help/latest. -- Дата доступа: 27.09.2026.] <cmake>
