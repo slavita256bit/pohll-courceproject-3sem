@@ -124,16 +124,19 @@
   #item(3)[Исходные данные к проекту #field(task.source-data)]
   #item(4)[
     Содержание расчетно-пояснительной записки (перечень вопросов, которые подлежат разработке):
-    #block(above: 0.5em, inset: (left: 0.5em), stack(
-      spacing: 0.4em,
-      ..task.contents.map(((level, it)) => pad(left: level * 1.5em, emph(it))),
-    ))
+    #block(above: 0.3em, inset: (left: 0.5em))[
+      #set par(leading: 0.2em, spacing: 0pt)
+      #stack(
+        spacing: 0.15em,
+        ..task.contents.map(((level, it)) => pad(left: level * 1.5em, emph(it))),
+      )
+    ]
   ]
 
   #item(5)[
     Перечень графического материала (с точным обозначением обязательных чертежей и графиков):
     #block(above: 0.6em, stack(
-      spacing: 0.6em,
+      spacing: 0.3em,
       ..task.graphics.enumerate().map(((i, it)) => pad(left: 0.5em, field[#(i + 1). #it])),
     ))
   ]
@@ -144,7 +147,7 @@
     #block(above: 0.8em, table(
       columns: (1fr, auto, auto),
       stroke: 0.5pt,
-      inset: (x: 0.4em, y: 0.35em),
+      inset: (x: 0.4em, y: 0.2em),
       align: (left + horizon, center + horizon, center + horizon),
       table.header([*Этап*], [*Срок*], [*Объем*]),
       ..task.schedule.map(((stage, date, share)) => (emph(stage), emph(date), emph(share))).flatten(),
@@ -153,9 +156,9 @@
     Защита курсового проекта #field(task.defense)
   ]
 
-  #v(3em)
+  #v(1.5em)
   #sign-row([РУКОВОДИТЕЛЬ], task.manager, [(подпись)])
-  #v(2em)
+  #v(1.2em)
   #sign-row([Задание принял к исполнению], task.student-short, [(дата и подпись студента)])
 ]
 
