@@ -1,142 +1,24 @@
-#import "@local/typst-bsuir-core:1.18.8": *
-#import "title.typ": pnayavu-course-project
+#import "bsuir-core/lib.typ": no-page-number, stp
+#import "title.typ": course-project-title
 
+#set page(margin: (left: 30mm, right: 15mm, top: 20mm, bottom: 20mm))
 #set text(font: "Times New Roman", size: 14pt, lang: "ru", overhang: false)
+#set par(leading: 8.3pt, spacing: 8.3pt, justify: true)
 #show math.equation: set text(font: "STIX Two Math", size: 14pt)
 
-#show: gost.with(
-  title-template: custom-title-template.from-module(pnayavu-course-project),
-  student: (
-    name: "Ермаков В.С",
-    group: "550503"
-  ),
-  manager: (
-    name: "Ковальчук А.М.",
-  ),
-  work: (
-    topic: "Разработка кроссплатформенного приложения\n«Маркетплейс»",
-    code: "6-05-0611-05 305"
-  ),
-  year: none,
-  pagination-align: right,
-  margin: (left: 30mm, right: 15mm, top: 20mm, bottom: 20mm),
-//   footer: (city: "МИНСК", year: "2026")
-)
+#course-project-title()
 
 #show "<<": "«"
 #show ">>": "»"
-
-// Нумерация рисунков и таблиц по разделам (например, Таблица 1.1)
-#show figure.where(kind: image): set figure(
-  numbering: n => {
-    let section = counter(heading).get().first()
-    numbering("1.1", section, n)
-  }
-)
-
-#show figure.where(kind: table): set figure(
-  numbering: n => {
-    let section = counter(heading).get().first()
-    numbering("1.1", section, n)
-  }
-)
-
-#show figure.where(kind: table): set figure(gap: 0.3em)
-
-// Заголовки 1 уровня всегда с новой страницы
-#show heading.where(level: 1): it => {
-  counter(figure.where(kind: table)).update(0)
-  counter(figure.where(kind: image)).update(0)
-  pagebreak(weak: true)
-  upper(it)
-}
 
 #show math.equation: it => {
   show ".": ","
   if it.block { pad(y: 0.5em, it) } else { it }
 }
 
-// Настройка содержания
-#show outline.entry: it => {
-  show linebreak: []
-  let clean_body = {
-    show "(Обязательное)": ""
-    show "(Справочное)": ""
-    show strong: it => it.body
-    show v: []
-    it.body()
-  }
-
-  set block(spacing: 0.65em)
-
-  if state("appendixes", false).at(it.element.location()) {
-    set text(weight: "regular")
-    link(it.element.location(), it.indented(
-      none,
-      [ПРИЛОЖЕНИЕ #it.prefix() #clean_body]
-        + sym.space
-        + box(width: 1fr, it.fill)
-        + sym.space
-        + sym.wj
-        + it.page()
-    ))
-  } else {
-    it
-  }
-}
-
 #set math.equation(numbering: none)
-// Межстрочный интервал 1,0 (шаг строк 18 пт) по СТП 01-2024, п. 2.1.1:
-// шаг = высота прописной буквы (~9,7 пт) + leading; между абзацами — тот же шаг
+// Шаг строк для текста и простых перечислений.
 #let stp-line-step = 18pt
-#let stp-leading = 8.3pt
-// Пробельная строка добавляет один шаг к обычному промежутку между строками.
-#let stp-blank-line-gap = stp-line-step + stp-leading
-#set par(leading: stp-leading, spacing: stp-leading, first-line-indent: 1.25cm, justify: true)
-// Приложение Л СТП: нижняя граница номера в 10 мм от края листа.
-#let stp-page-number-bottom = 10mm
-#set page(footer-descent: 0pt, footer: context {
-  if counter(page).get().first() > 1 {
-    set par(first-line-indent: 0pt)
-    box(width: 100%, height: page.margin.bottom - stp-page-number-bottom,
-      align(bottom + right,
-        text(top-edge: "bounds", bottom-edge: "bounds", counter(page).display()),
-      ),
-    )
-  }
-})
-
-// СТП 2.1.1, 2.2.6 и приложение Л: пробельная строка у заголовков.
-#show heading: set block(above: stp-blank-line-gap, below: stp-blank-line-gap)
-// СТП 2.6.3: пробельная строка снаружи таблицы вместе с названием.
-// Библиотека gost уже добавляет pad(bottom: 0.5em) ко всем figure.
-#let gost-figure-bottom-inset = 0.5em
-#show figure.where(kind: table): set block(above: 0pt, below: 0pt)
-#show figure.where(kind: table): it => block(
-  breakable: false,
-  above: stp-blank-line-gap,
-  below: stp-blank-line-gap - gost-figure-bottom-inset,
-)[#it]
-// Тире в подписях рисунков и таблиц — «–», как в СТП («Рисунок 2.1 – Название»)
-#set figure.caption(separator: [ -- ])
-
-#show heading: it => {
-  if it.numbering == none {
-    set align(center)
-    it
-  } else {
-    it
-  }
-}
-
-#show figure.where(kind: table): set align(left)
-#show figure.caption.where(kind: table): set align(left)
-#set table(align: left + horizon)
-#show table: set par(justify: false)
-
-#show figure: fig => {
-  if fig.kind == image { move(dx: -7.5mm, fig) } else { fig }
-}
 
 // ====================================================
 // ИСТОЧНИКИ: запись списка — #source[текст] <key>, ссылка в тексте — @key -> [n]
@@ -147,17 +29,13 @@
   justify: true,
 )[[#it.counter.display()] #it.body]))
 
-#show ref: it => {
-  let el = it.element
-  if el != none and el.func() == figure and el.kind == "source" {
-    link(el.location(), [[#numbering("1", ..el.counter.at(el.location()))]])
-  } else {
-    it
-  }
-}
+// ==========================================
+// ТЕКСТ КУРСОВОЙ РАБОТЫ
+// ==========================================
 
-#show figure.where(kind: image): set figure(gap: 1.5em)
-#show figure.where(kind: image): set block(above: 2em, below: 1em)
+#include "task-sheet.typ"
+
+#show: stp.with(line-spacing: 18pt)
 
 // ====================================================
 // АВТОМАТИЧЕСКАЯ ПУНКТУАЦИЯ ДЛЯ СПИСКОВ (ГОСТ)
@@ -166,7 +44,7 @@
 // СТП 2.3.5 и приложение Л: маркер с абзацного отступа,
 // продолжение — от левого поля, между пунктами обычный шаг строк.
 #show list: it => {
-  set par(first-line-indent: (amount: 1.25cm, all: true), spacing: stp-leading)
+  set par(first-line-indent: (amount: 1.25cm, all: true), spacing: stp-line-step - 14pt)
   for (i, item) in it.children.enumerate() {
     let delim = if i == it.children.len() - 1 [.] else [;]
     par()[-- #item.body#delim]
@@ -184,18 +62,22 @@
   }
 }
 
-// ==========================================
-// ТЕКСТ КУРСОВОЙ РАБОТЫ
-// ==========================================
+#show ref: it => {
+  let el = it.element
+  if el != none and el.func() == figure and el.kind == "source" {
+    link(el.location(), [[#numbering("1", ..el.counter.at(el.location()))]])
+  } else {
+    it
+  }
+}
 
-#include "task-sheet.typ"
-
+#no-page-number()
 #heading(numbering: none, outlined: false)[СОДЕРЖАНИЕ]
 #outline(title: none, depth: 2, indent: auto)
 
 = Введение
 
-Маркетплейс представляет собой торговую площадку, на которой размещаются предложения разных продавцов. Покупатель получает доступ к общему каталогу и может выбирать товары по их характеристикам, стоимости и отзывам. Продавец размещает сведения о своих товарах и обрабатывает поступившие заказы. Организация такой площадки требует согласованной работы с данными о товарах, пользователях и покупках.
+Маркетплейс представляет собой торговую площадку, на которой размещаются предложения продавцов. Покупатель получает доступ к общему каталогу и может выбирать товары по их характеристикам, стоимости и отзывам. В разрабатываемом приложении один продавец размещает сведения о товарах и обрабатывает поступившие заказы. Организация такой площадки требует согласованной работы с данными о товарах, пользователях и покупках.
 
 При большом количестве предложений одного просмотра каталога недостаточно для выбора товара. Информация должна быть упорядочена так, чтобы пользователь мог найти нужное предложение и сравнить его с другими. При этом товары различаются по набору характеристик: для одежды важны размер и материал, для техники -- параметры устройства. Поэтому организация каталога должна учитывать особенности категорий и позволять изменять их состав без переработки всей программы.
 
@@ -207,7 +89,7 @@
 
 Целью курсового проекта является разработка кроссплатформенного настольного приложения "Маркетплейс" с графическим интерфейсом. Работа включает анализ существующих решений, выбор технологий, проектирование структуры приложения, реализацию программных модулей и проверку их работы. Подробные требования к программе приведены в постановке задачи.
 
-Практическое значение проекта состоит в закреплении навыков разработки приложений на языке "C++", объектно-ориентированного проектирования и работы с файловыми данными. Результатом должно стать приложение, позволяющее продемонстрировать взаимодействие покупателей, продавцов и администратора. Проверка программы должна показать, что действия пользователей приводят к ожидаемым изменениям данных и что эти изменения сохраняются после завершения работы.
+Практическое значение проекта состоит в закреплении навыков разработки приложений на языке "C++", объектно-ориентированного проектирования и работы с файловыми данными. Результатом должно стать приложение, позволяющее продемонстрировать взаимодействие покупателей, продавца и администратора. Проверка программы должна показать, что действия пользователей приводят к ожидаемым изменениям данных и что эти изменения сохраняются после завершения работы.
 
 #include "01-literature-review.typ"
 
