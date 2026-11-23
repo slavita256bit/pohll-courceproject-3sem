@@ -1,5 +1,24 @@
 # Scribe Pro preview in PyCharm
 
+## Initial preview position, 23 November 2026
+
+The user requested that opening an included file show its position in the pinned
+document. The installed patch waits for the embedded page to load and Tinymist to
+report a successful compilation, then requests one scroll to the editor's caret.
+For an included file whose caret is still before its first top-level heading, it
+uses that heading instead. Existing caret synchronization remains unchanged.
+Files with no rendered source at the selected position may not produce a jump.
+
+A local Tinymist socket probe returned a document position for chapter 01, and
+focused tests covered the readiness events, heading fallback and one-shot jump.
+The changed classes passed bytecode verification and loaded with PyCharm's JBR.
+The installed JAR's SHA-256 is
+`887d4ebdefbc3ed5f3f6d162b10f9e7b8f72f1f17de2ec343ee136896d2a5143`.
+The browser's render timing still needs a live IDE check. Sources and a backup of
+the previous working JAR are in [scribe-scroll-patch-20261123](scribe-scroll-patch-20261123/).
+To roll back just this change, close PyCharm and copy that directory's
+`previous.jar` over the installed JAR, after verifying the plugin version.
+
 ## Language-server null-default correction
 
 The user reported that the Problems tab still showed the missing labels. The

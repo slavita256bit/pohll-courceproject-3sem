@@ -1,0 +1,690 @@
+{
+  "version": 1,
+  "canvas": {
+    "width": 225,
+    "height": 342,
+    "textSize": 8
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "kind": "terminal",
+      "position": {
+        "x": 55,
+        "y": 10
+      },
+      "text": "Начало"
+    },
+    {
+      "id": "vars",
+      "kind": "process",
+      "position": {
+        "x": 55,
+        "y": 35
+      },
+      "text": "Вх.: products, filter\nПр.: product, condition,\nvalue, matched\nВых.: result"
+    },
+    {
+      "id": "init",
+      "kind": "predefined",
+      "position": {
+        "x": 55,
+        "y": 63
+      },
+      "text": "ф. clear_result()\nОчистка дерева result"
+    },
+    {
+      "id": "first",
+      "kind": "predefined",
+      "position": {
+        "x": 55,
+        "y": 90
+      },
+      "text": "ф. first_product()\nПервый товар product\nпри обходе по ключу"
+    },
+    {
+      "id": "product",
+      "kind": "decision",
+      "position": {
+        "x": 55,
+        "y": 117
+      },
+      "text": "Товар product\nсуществует"
+    },
+    {
+      "id": "first-condition",
+      "kind": "predefined",
+      "position": {
+        "x": 55,
+        "y": 144
+      },
+      "text": "ф. first_condition()\nПервое условие condition\nиз фильтра filter"
+    },
+    {
+      "id": "condition",
+      "kind": "decision",
+      "position": {
+        "x": 55,
+        "y": 171
+      },
+      "text": "Условие condition\nсуществует"
+    },
+    {
+      "id": "value",
+      "kind": "predefined",
+      "position": {
+        "x": 55,
+        "y": 198
+      },
+      "text": "ф. get_property_value()\nЗначение value по ID\nиз определения condition",
+      "emphasis": {
+        "text": "get_property_value()",
+        "size": 7
+      }
+    },
+    {
+      "id": "absent",
+      "kind": "decision",
+      "position": {
+        "x": 55,
+        "y": 225
+      },
+      "text": "Значение value\nотсутствует"
+    },
+    {
+      "id": "allowed",
+      "kind": "decision",
+      "position": {
+        "x": 116,
+        "y": 225
+      },
+      "text": "allow_missing\n(пропуск разрешён)"
+    },
+    {
+      "id": "pass-out",
+      "kind": "connector",
+      "position": {
+        "x": 116,
+        "y": 251
+      },
+      "text": "А"
+    },
+    {
+      "id": "pass-in",
+      "kind": "connector",
+      "position": {
+        "x": 105,
+        "y": 306
+      },
+      "text": "А"
+    },
+    {
+      "id": "compare",
+      "kind": "predefined",
+      "position": {
+        "x": 55,
+        "y": 252
+      },
+      "text": "ф. matches()\nПроверка значения value\nусловием condition"
+    },
+    {
+      "id": "matches",
+      "kind": "decision",
+      "position": {
+        "x": 55,
+        "y": 279
+      },
+      "text": "matched\n(условие выполнено)"
+    },
+    {
+      "id": "next-condition",
+      "kind": "predefined",
+      "position": {
+        "x": 55,
+        "y": 306
+      },
+      "text": "ф. next_condition()\nСледующее условие\ncondition из фильтра"
+    },
+    {
+      "id": "add",
+      "kind": "predefined",
+      "position": {
+        "x": 116,
+        "y": 171
+      },
+      "text": "ф. add_result()\nСсылка на товар product\nв дерево result"
+    },
+    {
+      "id": "next-product",
+      "kind": "predefined",
+      "position": {
+        "x": 116,
+        "y": 144
+      },
+      "text": "ф. next_product()\nСледующий товар product\nпри обходе по ключу"
+    },
+    {
+      "id": "finish",
+      "kind": "terminal",
+      "position": {
+        "x": 55,
+        "y": 333
+      },
+      "text": "Конец"
+    }
+  ],
+  "routes": [
+    {
+      "id": "r1",
+      "points": [
+        {
+          "node": "start",
+          "side": "bottom"
+        },
+        {
+          "node": "vars",
+          "side": "top"
+        }
+      ],
+      "arrow": true
+    },
+    {
+      "id": "r2",
+      "points": [
+        {
+          "node": "vars",
+          "side": "bottom"
+        },
+        {
+          "node": "init",
+          "side": "top"
+        }
+      ],
+      "arrow": true
+    },
+    {
+      "id": "r3",
+      "points": [
+        {
+          "node": "init",
+          "side": "bottom"
+        },
+        {
+          "node": "first",
+          "side": "top"
+        }
+      ],
+      "arrow": true
+    },
+    {
+      "id": "r4",
+      "points": [
+        {
+          "node": "first",
+          "side": "bottom"
+        },
+        {
+          "junction": "product-loop"
+        },
+        {
+          "node": "product",
+          "side": "top"
+        }
+      ],
+      "arrow": true
+    },
+    {
+      "id": "r5",
+      "points": [
+        {
+          "node": "product",
+          "side": "bottom"
+        },
+        {
+          "node": "first-condition",
+          "side": "top"
+        }
+      ],
+      "arrow": true
+    },
+    {
+      "id": "r6",
+      "points": [
+        {
+          "node": "first-condition",
+          "side": "bottom"
+        },
+        {
+          "junction": "condition-loop"
+        },
+        {
+          "node": "condition",
+          "side": "top"
+        }
+      ],
+      "arrow": true
+    },
+    {
+      "id": "r7",
+      "points": [
+        {
+          "node": "condition",
+          "side": "bottom"
+        },
+        {
+          "node": "value",
+          "side": "top"
+        }
+      ],
+      "arrow": true
+    },
+    {
+      "id": "r8",
+      "points": [
+        {
+          "node": "condition",
+          "side": "right"
+        },
+        {
+          "node": "add",
+          "side": "left"
+        }
+      ],
+      "arrow": true
+    },
+    {
+      "id": "r9",
+      "points": [
+        {
+          "node": "value",
+          "side": "bottom"
+        },
+        {
+          "node": "absent",
+          "side": "top"
+        }
+      ],
+      "arrow": true
+    },
+    {
+      "id": "r10",
+      "points": [
+        {
+          "node": "absent",
+          "side": "bottom"
+        },
+        {
+          "node": "compare",
+          "side": "top"
+        }
+      ],
+      "arrow": true
+    },
+    {
+      "id": "r11",
+      "points": [
+        {
+          "node": "absent",
+          "side": "right"
+        },
+        {
+          "node": "allowed",
+          "side": "left"
+        }
+      ],
+      "arrow": true
+    },
+    {
+      "id": "r12",
+      "points": [
+        {
+          "node": "compare",
+          "side": "bottom"
+        },
+        {
+          "node": "matches",
+          "side": "top"
+        }
+      ],
+      "arrow": true
+    },
+    {
+      "id": "r13",
+      "points": [
+        {
+          "node": "matches",
+          "side": "bottom"
+        },
+        {
+          "node": "next-condition",
+          "side": "top"
+        }
+      ],
+      "arrow": true
+    },
+    {
+      "id": "r14",
+      "points": [
+        {
+          "node": "matches",
+          "side": "right"
+        },
+        {
+          "x": 153,
+          "y": 0,
+          "alignY": "matches"
+        },
+        {
+          "junction": "skip-value"
+        },
+        {
+          "x": 153,
+          "y": 0,
+          "alignY": "next-product"
+        },
+        {
+          "node": "next-product",
+          "side": "right"
+        }
+      ],
+      "arrow": true
+    },
+    {
+      "id": "r15",
+      "points": [
+        {
+          "node": "allowed",
+          "side": "right"
+        },
+        {
+          "junction": "skip-value"
+        }
+      ],
+      "arrow": false
+    },
+    {
+      "id": "r16",
+      "points": [
+        {
+          "node": "allowed",
+          "side": "bottom"
+        },
+        {
+          "node": "pass-out",
+          "side": "top"
+        }
+      ],
+      "arrow": true
+    },
+    {
+      "id": "r17",
+      "points": [
+        {
+          "node": "pass-in",
+          "side": "left"
+        },
+        {
+          "node": "next-condition",
+          "side": "right"
+        }
+      ],
+      "arrow": true
+    },
+    {
+      "id": "r18",
+      "points": [
+        {
+          "node": "next-condition",
+          "side": "left"
+        },
+        {
+          "x": 25,
+          "y": 0,
+          "alignY": "next-condition"
+        },
+        {
+          "x": 25,
+          "y": 157
+        },
+        {
+          "junction": "condition-loop"
+        }
+      ],
+      "arrow": true
+    },
+    {
+      "id": "r19",
+      "points": [
+        {
+          "node": "add",
+          "side": "top"
+        },
+        {
+          "node": "next-product",
+          "side": "bottom"
+        }
+      ],
+      "arrow": true
+    },
+    {
+      "id": "r20",
+      "points": [
+        {
+          "node": "next-product",
+          "side": "top"
+        },
+        {
+          "x": 0,
+          "y": 103,
+          "alignX": "next-product"
+        },
+        {
+          "junction": "product-loop"
+        }
+      ],
+      "arrow": true
+    },
+    {
+      "id": "r21",
+      "points": [
+        {
+          "node": "product",
+          "side": "left"
+        },
+        {
+          "x": 12,
+          "y": 0,
+          "alignY": "product"
+        },
+        {
+          "x": 12,
+          "y": 323
+        },
+        {
+          "x": 0,
+          "y": 323,
+          "alignX": "finish"
+        },
+        {
+          "node": "finish",
+          "side": "top"
+        }
+      ],
+      "arrow": true
+    }
+  ],
+  "junctions": [
+    {
+      "id": "product-loop",
+      "anchor": {
+        "node": "product",
+        "side": "top"
+      },
+      "position": {
+        "x": 0,
+        "y": -4
+      }
+    },
+    {
+      "id": "condition-loop",
+      "anchor": {
+        "node": "condition",
+        "side": "top"
+      },
+      "position": {
+        "x": 0,
+        "y": -4
+      }
+    },
+    {
+      "id": "skip-value",
+      "position": {
+        "x": 153,
+        "y": 225
+      }
+    }
+  ],
+  "labels": [
+    {
+      "id": "l1",
+      "anchor": {
+        "route": "r5",
+        "along": 0.14285714285714285
+      },
+      "position": {
+        "x": 7,
+        "y": 0
+      },
+      "width": 12,
+      "text": "Да"
+    },
+    {
+      "id": "l2",
+      "anchor": {
+        "route": "r21",
+        "along": 0.039711191335740074
+      },
+      "position": {
+        "x": 0,
+        "y": -5
+      },
+      "width": 12,
+      "text": "Нет"
+    },
+    {
+      "id": "l3",
+      "anchor": {
+        "route": "r7",
+        "along": 0.14285714285714285
+      },
+      "position": {
+        "x": 7,
+        "y": 0
+      },
+      "width": 12,
+      "text": "Да"
+    },
+    {
+      "id": "l4",
+      "anchor": {
+        "route": "r8",
+        "along": 0.5238095238095238
+      },
+      "position": {
+        "x": 0,
+        "y": -5
+      },
+      "width": 12,
+      "text": "Нет"
+    },
+    {
+      "id": "l5",
+      "anchor": {
+        "route": "r10",
+        "along": 0.14285714285714285
+      },
+      "position": {
+        "x": 7,
+        "y": 0
+      },
+      "width": 12,
+      "text": "Нет"
+    },
+    {
+      "id": "l6",
+      "anchor": {
+        "route": "r11",
+        "along": 0.5238095238095238
+      },
+      "position": {
+        "x": 0,
+        "y": -5
+      },
+      "width": 12,
+      "text": "Да"
+    },
+    {
+      "id": "l7",
+      "anchor": {
+        "route": "r16",
+        "along": 0.18181818181818182
+      },
+      "position": {
+        "x": 7,
+        "y": 0
+      },
+      "width": 12,
+      "text": "Да"
+    },
+    {
+      "id": "l8",
+      "anchor": {
+        "route": "r15",
+        "along": 0.47058823529411764
+      },
+      "position": {
+        "x": 0,
+        "y": -5
+      },
+      "width": 12,
+      "text": "Нет"
+    },
+    {
+      "id": "l9",
+      "anchor": {
+        "route": "r13",
+        "along": 0.14285714285714285
+      },
+      "position": {
+        "x": 7,
+        "y": 0
+      },
+      "width": 12,
+      "text": "Да"
+    },
+    {
+      "id": "l10",
+      "anchor": {
+        "route": "r14",
+        "along": 0.04782608695652174
+      },
+      "position": {
+        "x": 0,
+        "y": -5
+      },
+      "width": 12,
+      "text": "Нет"
+    }
+  ],
+  "comments": [
+    {
+      "id": "c1",
+      "node": "vars",
+      "side": "right",
+      "gap": 8,
+      "width": 140,
+      "height": 50,
+      "text": "Метод CategoryProducts::filter()\nproducts – дерево товаров выбранной конечной категории, тип BinaryTree<Product>.\nОбход products выполняется по ключу: левое поддерево, корень, правое поддерево.\nfilter – набор условий отбора, тип ProductFilter&.\ncondition – условие для характеристики, тип FilterCondition*.\ndefinition – определение характеристики в condition, тип PropertyDefinition.\nМетод matches() проверяет совпадение через == или включительный диапазон через ≤.\nproduct – текущий товар из дерева products, тип Product*.\nvalue – значение проверяемой характеристики у product, тип PropertyValue*.\nmatched – результат проверки condition, тип bool.\nresult – дерево ссылок на подходящие товары, тип BinaryTree<FilteredProduct>&.\nallow_missing – пропуск разрешён настройкой INCLUDE_PRODUCTS_WITH_MISSING_PROPERTY и характеристика необязательна, тип bool."
+    }
+  ]
+}

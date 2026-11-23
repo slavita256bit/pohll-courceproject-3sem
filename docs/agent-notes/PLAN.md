@@ -1,5 +1,10 @@
 # Course project plan
 
+## Priorities
+
+- Move the bibliography from references.typ to Hayagriva YAML (refs.yml) and use the built-in Typst bibliography with the bsuir-core style. Preserve citation keys and check numbering by first citation, access dates, and entries that are still uncited.
+- Enable the new bsuir-core grid on both appendix flowcharts. Compile main.typ and check the rendered sheets for grid visibility and legibility around text, arrows, and the drawing frame.
+
 ## Where work stopped
 
 - The title page, assignment sheet, contents, introduction, literature review, and references are drafted. Section 2.1 and the reference to the class diagram in 2.2 are drafted. Section 2.3 remains to be written from reviewed class declarations. Sections 3.1 and 3.2 and three appendix drawings have preliminary drafts. Section 4 and the conclusion are pending.
