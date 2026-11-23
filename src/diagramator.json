@@ -1,0 +1,664 @@
+{
+  "version": 2,
+  "output": "/home/slavita/Documents/typst-projects/pohll-courceproject-3sem/drawings/classes.typ",
+  "autoExport": true,
+  "style": {
+    "styleVersion": 2,
+    "name": "GOST",
+    "font": [
+      "Times New Roman",
+      "Liberation Serif",
+      "serif"
+    ],
+    "fontSize": 13.0,
+    "nameFontSize": 14.0,
+    "stereotypeFontSize": 11.0,
+    "lineHeight": 18.0,
+    "paddingX": 8.0,
+    "paddingY": 4.0,
+    "borderWidth": 1.0,
+    "cornerRadius": 0.0,
+    "nameBold": true,
+    "kindBadge": false,
+    "colors": {
+      "text": "#000000",
+      "border": "#000000",
+      "fill": "#ffffff",
+      "headerFill": "#ffffff",
+      "edge": "#000000",
+      "badge": "#add1b2"
+    },
+    "orthogonalEdges": true,
+    "edgeMergeTargets": true,
+    "edgeEditable": true,
+    "edgeClearance": 12.0,
+    "edgePortSpacing": 20.0,
+    "edgeBendPenalty": 24.0,
+    "edgeSourceSide": "top",
+    "edgeTargetSide": "bottom",
+    "edgeWidth": 1.0,
+    "arrowSize": 12.0,
+    "edgeDashLength": 6.0,
+    "edgeDashGap": 4.0,
+    "interfaceHidesAttributes": true,
+    "showStereotype": true,
+    "templateNotation": "corner",
+    "memberIconStyle": "text",
+    "showMethodParams": false,
+    "showMethodReturnType": true
+  },
+  "positions": {
+    "classAccount": {
+      "x": 531.1666666666666,
+      "y": 18.666666666666668
+    },
+    "classAdministrator": {
+      "x": 543.8612795395605,
+      "y": 436.1933121208892
+    },
+    "classBinaryFile": {
+      "x": 1889.601765694763,
+      "y": 1153.898529535968
+    },
+    "classBinaryTree": {
+      "x": 1106.059360730594,
+      "y": 83.65639269406404
+    },
+    "classBooleanFilterCondition": {
+      "x": 2131.7911406879475,
+      "y": 684.2968750866498
+    },
+    "classBooleanPropertyValue": {
+      "x": 2140.0,
+      "y": 234.66666666666663
+    },
+    "classBuyer": {
+      "x": 308.6990454400122,
+      "y": 424.1883492426665
+    },
+    "classCart": {
+      "x": 0.0,
+      "y": 1154.6666666666667
+    },
+    "classCartItem": {
+      "x": 31.261234032847018,
+      "y": 1340.4259100630272
+    },
+    "classCategory": {
+      "x": -13.719957575111636,
+      "y": 688.9615977262231
+    },
+    "classCategoryProducts": {
+      "x": 293.55930937316066,
+      "y": 709.6739614201099
+    },
+    "classFile": {
+      "x": 1694.886770997874,
+      "y": 940.1835348390788
+    },
+    "classFilterCondition": {
+      "x": 1684.9018161621757,
+      "y": 464.9416210737696
+    },
+    "classFilteredProduct": {
+      "x": 762.6666666666666,
+      "y": 1074.6666666666667
+    },
+    "classIntegerFilterCondition": {
+      "x": 1605.837646897245,
+      "y": 683.0975655042098
+    },
+    "classIntegerPropertyValue": {
+      "x": 1620.0,
+      "y": 234.66666666666663
+    },
+    "classOrder": {
+      "x": 295.4628836484705,
+      "y": 1154.6666666666667
+    },
+    "classOrderItem": {
+      "x": 318.25298595472935,
+      "y": 1349.4567689729256
+    },
+    "classProduct": {
+      "x": 754.3109167280704,
+      "y": 661.7618333301843
+    },
+    "classProductFilter": {
+      "x": 1015.3761360621488,
+      "y": 1074.9917519218825
+    },
+    "classPropertyDefinition": {
+      "x": 1.714994696888951,
+      "y": 863.4349522720006
+    },
+    "classPropertyValue": {
+      "x": 1723.5,
+      "y": 18.666666666666668
+    },
+    "classRealFilterCondition": {
+      "x": 1862.94151336789,
+      "y": 679.4996367568897
+    },
+    "classRealPropertyValue": {
+      "x": 1876.0,
+      "y": 234.66666666666663
+    },
+    "classReview": {
+      "x": 335.9132524136782,
+      "y": 882.176619849098
+    },
+    "classSeller": {
+      "x": 769.8636409137738,
+      "y": 419.0433651519996
+    },
+    "classString": {
+      "x": 1927.207608202396,
+      "y": 775.4689592740399
+    },
+    "classTextFile": {
+      "x": 1556.2684323614292,
+      "y": 1153.898529535968
+    },
+    "classTextFilterCondition": {
+      "x": 1388.4519502297508,
+      "y": 685.3282453155477
+    },
+    "classTextPropertyValue": {
+      "x": 1360.0,
+      "y": 234.66666666666663
+    },
+    "classUser": {
+      "x": 518.6666666666666,
+      "y": 218.66666666666663
+    },
+    "structFilterCondition": {
+      "x": 1640.0,
+      "y": 770.6666666666666
+    },
+    "structstd_1_1formatter_3_01String_01_4": {
+      "x": 0.0,
+      "y": 1032.0
+    }
+  },
+  "collapsed": {
+    "classAccount": {
+      "attributes": false,
+      "methods": false
+    },
+    "classAdministrator": {
+      "attributes": false,
+      "methods": false
+    },
+    "classBinaryFile": {
+      "attributes": false,
+      "methods": false
+    },
+    "classBinaryTree": {
+      "attributes": false,
+      "methods": false
+    },
+    "classBooleanFilterCondition": {
+      "attributes": false,
+      "methods": false
+    },
+    "classBooleanPropertyValue": {
+      "attributes": false,
+      "methods": false
+    },
+    "classBuyer": {
+      "attributes": false,
+      "methods": false
+    },
+    "classCart": {
+      "attributes": false,
+      "methods": false
+    },
+    "classCartItem": {
+      "attributes": false,
+      "methods": false
+    },
+    "classCategory": {
+      "attributes": false,
+      "methods": false
+    },
+    "classCategoryProducts": {
+      "attributes": false,
+      "methods": false
+    },
+    "classFile": {
+      "attributes": false,
+      "methods": false
+    },
+    "classFilterCondition": {
+      "attributes": false,
+      "methods": false
+    },
+    "classFilteredProduct": {
+      "attributes": false,
+      "methods": false
+    },
+    "classIntegerFilterCondition": {
+      "attributes": false,
+      "methods": false
+    },
+    "classIntegerPropertyValue": {
+      "attributes": false,
+      "methods": false
+    },
+    "classOrder": {
+      "attributes": false,
+      "methods": false
+    },
+    "classOrderItem": {
+      "attributes": false,
+      "methods": false
+    },
+    "classProduct": {
+      "attributes": false,
+      "methods": false
+    },
+    "classProductFilter": {
+      "attributes": false,
+      "methods": false
+    },
+    "classPropertyDefinition": {
+      "attributes": false,
+      "methods": false
+    },
+    "classPropertyValue": {
+      "attributes": false,
+      "methods": false
+    },
+    "classRealFilterCondition": {
+      "attributes": false,
+      "methods": false
+    },
+    "classRealPropertyValue": {
+      "attributes": false,
+      "methods": false
+    },
+    "classReview": {
+      "attributes": false,
+      "methods": false
+    },
+    "classSeller": {
+      "attributes": false,
+      "methods": false
+    },
+    "classString": {
+      "attributes": false,
+      "methods": false
+    },
+    "classTextFile": {
+      "attributes": false,
+      "methods": false
+    },
+    "classTextFilterCondition": {
+      "attributes": false,
+      "methods": false
+    },
+    "classTextPropertyValue": {
+      "attributes": false,
+      "methods": false
+    },
+    "classUser": {
+      "attributes": false,
+      "methods": false
+    },
+    "structstd_1_1formatter_3_01String_01_4": {
+      "attributes": false,
+      "methods": false
+    }
+  },
+  "hidden": {
+    "classAccount": false,
+    "classAdministrator": false,
+    "classBinaryFile": false,
+    "classBinaryTree": false,
+    "classBooleanFilterCondition": false,
+    "classBooleanPropertyValue": false,
+    "classBuyer": false,
+    "classCart": false,
+    "classCartItem": false,
+    "classCategory": false,
+    "classCategoryProducts": false,
+    "classFile": false,
+    "classFilterCondition": false,
+    "classFilteredProduct": false,
+    "classIntegerFilterCondition": false,
+    "classIntegerPropertyValue": false,
+    "classOrder": false,
+    "classOrderItem": false,
+    "classProduct": false,
+    "classProductFilter": false,
+    "classPropertyDefinition": false,
+    "classPropertyValue": false,
+    "classRealFilterCondition": false,
+    "classRealPropertyValue": false,
+    "classReview": false,
+    "classSeller": false,
+    "classString": true,
+    "classTextFile": false,
+    "classTextFilterCondition": false,
+    "classTextPropertyValue": false,
+    "classUser": false,
+    "structFilterCondition": false,
+    "structstd_1_1formatter_3_01String_01_4": true
+  },
+  "hiddenRelationTypes": [
+    "aggregation",
+    "dependency",
+    "composition"
+  ],
+  "connections": [
+    {
+      "source": "classProduct",
+      "target": "classBinaryTree",
+      "type": "composition",
+      "anchors": {
+        "source": {
+          "side": "right",
+          "offset": 0.46
+        },
+        "target": {
+          "side": "left",
+          "offset": 0.53
+        }
+      }
+    },
+    {
+      "source": "classProduct",
+      "target": "classPropertyValue",
+      "type": "composition",
+      "anchors": {
+        "source": {
+          "side": "top",
+          "offset": 0.62
+        },
+        "target": {
+          "side": "left",
+          "offset": 0.52
+        }
+      }
+    },
+    {
+      "source": "classAccount",
+      "target": "classString",
+      "type": "composition",
+      "anchors": {
+        "source": {
+          "side": "right",
+          "offset": 0.5
+        },
+        "target": {
+          "side": "left",
+          "offset": 0.17
+        }
+      }
+    },
+    {
+      "source": "classAdministrator",
+      "target": "classCategory",
+      "type": "dependency",
+      "anchors": {
+        "source": {
+          "side": "bottom",
+          "offset": 0.38
+        },
+        "target": {
+          "side": "top",
+          "offset": 0.8
+        }
+      }
+    },
+    {
+      "source": "classAdministrator",
+      "target": "classPropertyDefinition",
+      "type": "dependency",
+      "anchors": {
+        "source": {
+          "side": "bottom",
+          "offset": 0.7
+        },
+        "target": {
+          "side": "right",
+          "offset": 0.2
+        }
+      }
+    },
+    {
+      "source": "classBinaryTree",
+      "target": "classBinaryTree",
+      "type": "association",
+      "anchors": {
+        "source": {
+          "side": "top",
+          "offset": 0.44031023835844374
+        }
+      }
+    },
+    {
+      "source": "classBuyer",
+      "target": "classString",
+      "type": "dependency",
+      "anchors": {
+        "source": {
+          "side": "bottom",
+          "offset": 0.9
+        },
+        "target": {
+          "side": "left",
+          "offset": 0.33
+        }
+      }
+    },
+    {
+      "source": "classCart",
+      "target": "classCartItem",
+      "type": "composition",
+      "anchors": {
+        "source": {
+          "side": "bottom",
+          "offset": 0.5
+        },
+        "target": {
+          "side": "top",
+          "offset": 0.5
+        }
+      }
+    },
+    {
+      "source": "classCategory",
+      "target": "classPropertyDefinition",
+      "type": "composition",
+      "anchors": {
+        "source": {
+          "side": "bottom",
+          "offset": 0.47
+        },
+        "target": {
+          "side": "top",
+          "offset": 0.5
+        }
+      }
+    },
+    {
+      "source": "classCategory",
+      "target": "classString",
+      "type": "composition",
+      "anchors": {
+        "source": {
+          "side": "right",
+          "offset": 0.25
+        },
+        "target": {
+          "side": "left",
+          "offset": 0.09
+        }
+      }
+    },
+    {
+      "source": "classCategoryProducts",
+      "target": "classBinaryTree",
+      "type": "composition",
+      "anchors": {
+        "source": {
+          "side": "right",
+          "offset": 0.5
+        },
+        "target": {
+          "side": "bottom",
+          "offset": 0.7
+        }
+      }
+    },
+    {
+      "source": "classFilteredProduct",
+      "target": "classProduct",
+      "type": "association",
+      "anchors": {
+        "source": {
+          "side": "top",
+          "offset": 0.5
+        },
+        "target": {
+          "side": "bottom",
+          "offset": 0.34992166442045985
+        }
+      }
+    },
+    {
+      "source": "classOrder",
+      "target": "classOrderItem",
+      "type": "composition",
+      "anchors": {
+        "source": {
+          "side": "bottom",
+          "offset": 0.5
+        },
+        "target": {
+          "side": "top",
+          "offset": 0.5
+        }
+      }
+    },
+    {
+      "source": "classOrder",
+      "target": "classString",
+      "type": "composition",
+      "anchors": {
+        "source": {
+          "side": "right",
+          "offset": 0.5
+        },
+        "target": {
+          "side": "left",
+          "offset": 0.8
+        }
+      }
+    },
+    {
+      "source": "classProduct",
+      "target": "classString",
+      "type": "composition",
+      "anchors": {
+        "source": {
+          "side": "left",
+          "offset": 0.75
+        },
+        "target": {
+          "side": "right",
+          "offset": 0.16
+        }
+      }
+    },
+    {
+      "source": "classPropertyDefinition",
+      "target": "classString",
+      "type": "composition",
+      "anchors": {
+        "source": {
+          "side": "right",
+          "offset": 0.5
+        },
+        "target": {
+          "side": "left",
+          "offset": 0.57
+        }
+      }
+    },
+    {
+      "source": "classReview",
+      "target": "classString",
+      "type": "composition",
+      "anchors": {
+        "source": {
+          "side": "right",
+          "offset": 0.5
+        },
+        "target": {
+          "side": "left",
+          "offset": 0.43
+        }
+      }
+    },
+    {
+      "source": "classSeller",
+      "target": "classProduct",
+      "type": "dependency",
+      "anchors": {
+        "source": {
+          "side": "right",
+          "offset": 0.65
+        },
+        "target": {
+          "side": "top",
+          "offset": 0.2
+        }
+      }
+    },
+    {
+      "source": "classSeller",
+      "target": "classString",
+      "type": "dependency",
+      "anchors": {
+        "target": {
+          "side": "top",
+          "offset": 0.5
+        }
+      }
+    },
+    {
+      "source": "classTextPropertyValue",
+      "target": "classString",
+      "type": "composition",
+      "anchors": {
+        "source": {
+          "side": "left",
+          "offset": 0.5
+        },
+        "target": {
+          "side": "right",
+          "offset": 0.28
+        }
+      }
+    },
+    {
+      "source": "classUser",
+      "target": "classString",
+      "type": "composition",
+      "anchors": {
+        "source": {
+          "side": "right",
+          "offset": 0.5
+        },
+        "target": {
+          "side": "left",
+          "offset": 0.25
+        }
+      }
+    }
+  ],
+  "notes": []
+}

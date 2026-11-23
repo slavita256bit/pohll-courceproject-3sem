@@ -13,7 +13,7 @@ public final class PinSynchronizer {
   if (!(message instanceof NotificationMessage) || server == null) return;
   String method=((NotificationMessage)message).getMethod();
   if (!"textDocument/didOpen".equals(method) && !"textDocument/didChange".equals(method)) return;
-  String pin=PropertiesComponent.getInstance(project).getValue("typst.pinnedMainFile",null);
+  String pin=PropertiesComponent.getInstance(project).getValue("typst.pinnedMainFile","");
   if (pin != null && !new File(pin).isFile()) pin=null;
   synchronized(pins) {
    if (Objects.equals(pins.get(server),pin)) return;

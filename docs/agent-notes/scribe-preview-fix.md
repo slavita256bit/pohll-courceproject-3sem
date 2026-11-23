@@ -1,5 +1,18 @@
 # Scribe Pro preview in PyCharm
 
+## Language-server null-default correction
+
+The user reported that the Problems tab still showed the missing labels. The
+PyCharm log revealed that the prior synchronizer failed before sending the pin:
+`PropertiesComponent.getValue` rejects a null default value. The test stub had
+not enforced that IntelliJ API constraint. The corrected helper uses an empty
+default and treats it as an invalid file. Its test now rejects null defaults and
+passes pin, unpin, duplicate and missing-file cases. A prepared JAR changes only
+`PinSynchronizer.class` relative to the prior installed JAR. With PyCharm closed,
+the corrected JAR was installed and its SHA-256 verified as
+`5ec1d1b88d9d65e613bb965ee9b61e8eaba72300374a01fcce4bbf0c8b012062`.
+The user confirmed that everything works after the correction.
+
 ## Language-server diagnostics patch, 20 November 2026
 
 The user confirmed that embedded preview works, but its chapter still showed

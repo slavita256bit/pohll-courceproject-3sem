@@ -1,0 +1,4 @@
+[submodule "bsuir-core"]
+	path = bsuir-core
+	url = git@jiigle.dev:sit/bsuir-core.git
+	branch = main

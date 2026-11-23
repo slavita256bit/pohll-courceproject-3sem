@@ -7,7 +7,7 @@ import java.lang.reflect.Proxy;import java.util.*;import java.util.concurrent.*;
 public class TestPin {
  static String pin;static List<ExecuteCommandParams> calls=new ArrayList<>();
  public static void main(String[] args){
-  PropertiesComponent.current=new PropertiesComponent(){public String getValue(String k,String d){return pin;}};
+  PropertiesComponent.current=new PropertiesComponent(){public String getValue(String k,String d){Objects.requireNonNull(d);return pin==null?d:pin;}};
   WorkspaceService workspace=(WorkspaceService)Proxy.newProxyInstance(TestPin.class.getClassLoader(),new Class[]{WorkspaceService.class},(p,m,a)->{if(m.getName().equals("executeCommand")){calls.add((ExecuteCommandParams)a[0]);return CompletableFuture.completedFuture(null);} return null;});
   LanguageServer server=(LanguageServer)Proxy.newProxyInstance(TestPin.class.getClassLoader(),new Class[]{LanguageServer.class},(p,m,a)->{switch(m.getName()){case "getWorkspaceService":return workspace;case "hashCode":return 42;case "equals":return p==a[0];default:return null;}});
   NotificationMessage msg=new NotificationMessage();msg.setMethod("textDocument/didOpen");
